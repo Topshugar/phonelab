@@ -1,15 +1,16 @@
 # 📱 PhoneLab — Real Phone Testing, Not Emulators
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Stars](https://img.shields.io/github/stars/Topshugar/phonelab?style=social)](https://github.com/Topshugar/phonelab)
+https://img.shields.io/badge/License-MIT-green.svg](LICENSE)
+https://img.shields.io/badge/python-3.10+-blue.svg](https://www.python.org)
+https://img.shields.io/badge/contributions-welcome-brightgreen.svg](CONTRIBUTING.md)
+https://img.shields.io/github/stars/Topshugar/phonelab?style=social](https://github.com/Topshugar/phonelab)
+https://github.com/Topshugar/phonelab/actions/workflows/ci.yml/badge.svg](https://github.com/Topshugar/phonelab/actions/workflows/ci.yml)
 
-> **Emulators lie. Real phones crash differently.** PhoneLab runs your app on REAL Android phones and finds crashes emulators miss.
+> *Emulators lie. Real phones crash differently.* PhoneLab runs your app on REAL Android phones and finds crashes emulators miss.
 
 ### 🎥 Demo
-![Demo](https://raw.githubusercontent.com/Topshugar/phonelab/main/reports/demo.gif)
-*Tap, Swipe, Screenshot, Logs - Fully Automated*
+!https://raw.githubusercontent.com/Topshugar/phonelab/main/reports/demo.gif
+_Tap, Swipe, Screenshot, Logs - Fully Automated_
 
 ---
 
@@ -22,9 +23,9 @@
 - 🤖 JSON test flows - No code needed
 - 📸 Auto screenshots + logcat on failure
 - 🐍 100% Python - Hackable in 5 mins
+- 📊 HTML reports
 
-### 🚀 Quick Start
-```bash
+### 🚀 Quick Start - 30 Seconds
 git clone https://github.com/Topshugar/phonelab.git
 cd phonelab
 pip install -r requirements.txt
@@ -36,7 +37,7 @@ python python_controller/farm.py --test flows/login_flow.json
 - [ ] *v0.3 - Record Mode* - https://github.com/Topshugar/phonelab/blob/main/CONTRIBUTING.md
 - [ ] *v0.4 - Multi-phone Parallel* - https://github.com/Topshugar/phonelab/issues
 - [ ] *v0.5 - iOS Support* - https://github.com/Topshugar/phonelab/issues
-- [ ] *v1.0 - Web Dashboard* - https://github.com/Topshugar/phonelab/projects[x]
+- [ ] *v1.0 - Web Dashboard* - https://github.com/Topshugar/phonelab/projects
 
 ### 📸 How It Works
 !https://raw.githubusercontent.com/Topshugar/phonelab/main/docs/architecture.png
@@ -47,4 +48,4 @@ We welcome contributions! Please see our https://github.com/Topshugar/phonelab/b
 
 ### 📄 License
 [MIT License](LICENSE) - Free for commercial use.
-
+---
