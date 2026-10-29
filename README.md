@@ -3,12 +3,12 @@
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Open Source](https://img.shields.io/badge/Open%20Source-%E2%9D%A4%EF%B8%8F-red)](https://github.com)
+[![Stars](https://img.shields.io/github/stars/Topshugar/phonelab?style=social)](https://github.com/Topshugar/phonelab)
 
 > **Emulators lie. Real phones crash differently.** PhoneLab runs your app on REAL Android phones and finds crashes emulators miss.
 
 ### 🎥 Demo
-![Demo](reports/demo.gif)
+![Demo](https://raw.githubusercontent.com/Topshugar/phonelab/main/reports/demo.gif)
 *Tap, Swipe, Screenshot, Logs - Fully Automated*
 
 ---
@@ -22,44 +22,29 @@
 - 🤖 JSON test flows - No code needed
 - 📸 Auto screenshots + logcat on failure
 - 🐍 100% Python - Hackable in 5 mins
-- 📊 HTML reports
 
-### 🚀 Quick Start - 30 Seconds
+### 🚀 Quick Start
 ```bash
 git clone https://github.com/Topshugar/phonelab.git
 cd phonelab
 pip install -r requirements.txt
-
-# 1. Connect phone with USB Debugging ON
 adb devices
-
-# 2. Run your first test
 python python_controller/farm.py --test flows/login_flow.json
-That's it. Check `reports/` folder for screenshots + logs.
-
-### 🧪 Write a Test - No Coding
-`flows/login_flow.json`
-{
-  "flow": "login_test",
-  "steps": [
-    {"action": "tap", "x": 540, "y": 1200},
-    {"action": "wait", "seconds": 2},
-    {"action": "screenshot", "name": "login_screen"}
-  ]
-}
 ### 🗺️ Roadmap
-- v0.1 - Core http://farm.py
-- [ ] v0.2 - Screen Recorder + HTML Report
-- [ ] v0.3 - Record Mode: Click to generate JSON
-- [ ] v0.4 - Multi-phone parallel
-- [ ] v0.5 - iOS support
-- [ ] v1.0 - Web Dashboard
+- *v0.1 - Core http://farm.py* - https://github.com/Topshugar/phonelab/blob/main/python_controller/farm.py
+- [ ] *v0.2 - Screen Recorder + HTML Report* - https://github.com/Topshugar/phonelab/blob/main/CONTRIBUTING.md
+- [ ] *v0.3 - Record Mode* - https://github.com/Topshugar/phonelab/blob/main/CONTRIBUTING.md
+- [ ] *v0.4 - Multi-phone Parallel* - https://github.com/Topshugar/phonelab/issues
+- [ ] *v0.5 - iOS Support* - https://github.com/Topshugar/phonelab/issues
+- [ ] *v1.0 - Web Dashboard* - https://github.com/Topshugar/phonelab/projects[x]
 
-### 🤝 Want to Contribute?
-We are looking for contributors! Check [CONTRIBUTING.md](CONTRIBUTING.md)
+### 📸 How It Works
+!https://raw.githubusercontent.com/Topshugar/phonelab/main/docs/architecture.png
+_Real Phone -> ADB -> Python Controller -> Reports_
+
+### 🤝 Contributing
+We welcome contributions! Please see our https://github.com/Topshugar/phonelab/blob/main/CONTRIBUTING.md and our https://github.com/Topshugar/phonelab/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22.
 
 ### 📄 License
-MIT - Use it for any project.
+[MIT License](LICENSE) - Free for commercial use.
 
----
-*Star ⭐ this repo if emulators have ever wasted your time.*
