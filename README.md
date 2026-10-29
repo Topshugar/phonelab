@@ -1,16 +1,16 @@
 # 📱 PhoneLab — Real Phone Testing, Not Emulators
 
-https://img.shields.io/badge/License-MIT-green.svg](LICENSE)
-https://img.shields.io/badge/python-3.10+-blue.svg](https://www.python.org)
-https://img.shields.io/badge/contributions-welcome-brightgreen.svg](CONTRIBUTING.md)
-https://img.shields.io/github/stars/Topshugar/phonelab?style=social](https://github.com/Topshugar/phonelab)
-https://github.com/Topshugar/phonelab/actions/workflows/ci.yml/badge.svg](https://github.com/Topshugar/phonelab/actions/workflows/ci.yml)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Stars](https://img.shields.io/github/stars/Topshugar/phonelab?style=social)](https://github.com/Topshugar/phonelab)
+[![PhoneLab CI](https://github.com/Topshugar/phonelab/actions/workflows/main.yml/badge.svg)](https://github.com/Topshugar/phonelab/actions/workflows/main.yml)
 
-> *Emulators lie. Real phones crash differently.* PhoneLab runs your app on REAL Android phones and finds crashes emulators miss.
+> **Emulators lie. Real phones crash differently.** PhoneLab runs your app on REAL Android phones and finds crashes emulators miss.
 
 ### 🎥 Demo
-!https://raw.githubusercontent.com/Topshugar/phonelab/main/reports/demo.gif
-_Tap, Swipe, Screenshot, Logs - Fully Automated_
+![Demo](https://raw.githubusercontent.com/Topshugar/phonelab/main/reports/demo.gif)
+*Tap, Swipe, Screenshot, Logs - Fully Automated*
 
 ---
 
@@ -26,6 +26,7 @@ _Tap, Swipe, Screenshot, Logs - Fully Automated_
 - 📊 HTML reports
 
 ### 🚀 Quick Start - 30 Seconds
+```bash
 git clone https://github.com/Topshugar/phonelab.git
 cd phonelab
 pip install -r requirements.txt
@@ -48,4 +49,3 @@ We welcome contributions! Please see our https://github.com/Topshugar/phonelab/b
 
 ### 📄 License
 [MIT License](LICENSE) - Free for commercial use.
----
