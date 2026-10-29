@@ -1,3 +1,4 @@
-adb-shell
-opencv-python
-pillow
+adb-shell>=0.4.4
+pure-python-adb>=0.3.0.dev0
+Pillow>=10.0.0
+opencv-python>=4.8.0
