@@ -1,44 +1,65 @@
-# PhoneLab — Open Device Farm for Mobile QA
+# 📱 PhoneLab — Real Phone Testing, Not Emulators
 
-> Test your app on real phones. Python + ESP32 gantry that taps and swipes.
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Open Source](https://img.shields.io/badge/Open%20Source-%E2%9D%A4%EF%B8%8F-red)](https://github.com)
 
-## Why?
-Emulators lie. Real phones crash differently. PhoneLab is for real-hardware QA.
+> **Emulators lie. Real phones crash differently.** PhoneLab runs your app on REAL Android phones and finds crashes emulators miss.
 
-- 1 phone now, 10+ with gantry
-- No root, just ADB + Python
-- OpenCV checks for crashes
+### 🎥 Demo
+![Demo](reports/demo.gif)
+*Tap, Swipe, Screenshot, Logs - Fully Automated*
 
-## Structure
-phonelab/
-├── python_controller/farm.py
-├── firmware/
-├── flows/ # JSON tests
-└── reports/ # logs + screenshots
+---
 
-## Quick Start
+### Why PhoneLab?
+- ❌ Emulators: No real sensors, fake performance
+- ✅ PhoneLab: Real device, real crash logs, real screenshots
+
+### ✨ Features
+- 🔌 Plug & Play - Just `adb devices`
+- 🤖 JSON test flows - No code needed
+- 📸 Auto screenshots + logcat on failure
+- 🐍 100% Python - Hackable in 5 mins
+- 📊 HTML reports
+
+### 🚀 Quick Start - 30 Seconds
 ```bash
+git clone https://github.com/Topshugar/phonelab.git
+cd phonelab
 pip install -r requirements.txt
+
+# 1. Connect phone with USB Debugging ON
 adb devices
-python python_controller/farm.py --install app.apk
+
+# 2. Run your first test
 python python_controller/farm.py --test flows/login_flow.json
-## Example Test
+That's it. Check `reports/` folder for screenshots + logs.
+
+### 🧪 Write a Test - No Coding
 `flows/login_flow.json`
 {
-  "flow": "login",
+  "flow": "login_test",
   "steps": [
     {"action": "tap", "x": 540, "y": 1200},
-    {"action": "swipe", "from": [500, 1500], "to": [500, 500]}
+    {"action": "wait", "seconds": 2},
+    {"action": "screenshot", "name": "login_screen"}
   ]
 }
-## Roadmap
-- v0.1 Software core
-- v0.2 Gantry firmware
-- v0.3 Vision
-- v1.0 Full farm
+### 🗺️ Roadmap
+- v0.1 - Core http://farm.py
+- [ ] v0.2 - Screen Recorder + HTML Report
+- [ ] v0.3 - Record Mode: Click to generate JSON
+- [ ] v0.4 - Multi-phone parallel
+- [ ] v0.5 - iOS support
+- [ ] v1.0 - Web Dashboard
 
-## Safety
-For QA/testing only. Not for fake engagement.
+### 🤝 Want to Contribute?
+We are looking for contributors! Check [CONTRIBUTING.md](CONTRIBUTING.md)
 
-## License
-MIT
+### 📄 License
+MIT - Use it for any project.
+
+---
+*Star ⭐ this repo if emulators have ever wasted your time.*
