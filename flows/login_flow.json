@@ -1,0 +1,10 @@
+{
+  "flow": "login_test",
+  "steps": [
+    {"action": "wait", "seconds": 2},
+    {"action": "tap", "x": 540, "y": 1200},
+    {"action": "wait", "seconds": 1},
+    {"action": "screenshot", "name": "after_tap"},
+    {"action": "swipe", "from": [500, 1500], "to": [500, 500]}
+  ]
+}
