@@ -1,0 +1,3 @@
+adb-shell
+opencv-python
+pillow
