@@ -41,7 +41,7 @@ python python_controller/farm.py --test flows/login_flow.json
 ```
 
 ### 🗺️ Roadmap
-- [x] **v0.1 - Core 
+- [x] **v0.1 - Core**
 - [ ] **v0.2 - Screen Recorder + HTML Report**
 - [ ] **v0.3 - Record Mode**
 - [ ] **v0.4 - Multi-phone Parallel**
