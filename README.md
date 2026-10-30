@@ -1,70 +1,113 @@
-# PhoneLab - On-Device Android Lab
-**QA Status:** PASSED | Verified on Android 11+ | Release Artifact Validated
+# PhoneLab
 
-Self-contained Android automation framework for executing ADB operations directly on-device via LADB local bridge. No PC required.
+> On-device Android automation lab.
+> No PC. No Root. Just your phone.
 
-## QA Verification
+[[License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[[Android](https://img.shields.io/badge/Android-11%2B-brightgreen.svg)](#)
+[[PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](CONTRIBUTING.md)
 
-| Check | Status |
-| :--- | :--- |
-| Release artifact my-ladb-apk.zip | ✅ PASS - Downloadable via Tools tag |
-| ZIP extraction | ✅ PASS - Contains app-debug.apk |
-| APK installation | ✅ PASS - Installs without root |
-| Wireless Debugging pairing | ✅ PASS - Loopback pairing successful |
-| Termux environment | ✅ PASS - Python 3.10+ compatible |
-| farm.py execution | ✅ PASS - Runs on local ADB |
+### Why PhoneLab?
 
-**Download:** https://github.com/Topshugar/phonelab/releases/download/Tools/my-ladb-apk.zip
+Normal ADB needs a PC, cable, drivers.
 
-## Installation - Verified Walkthrough
+PhoneLab runs ADB directly on your
+phone using LADB. Your phone tests itself.
 
-### 1. Termux Setup (Required)
-Install Termux from F-Droid only. Play Store version is deprecated.
+### Features
+
+- **On-Device ADB** - LADB loopback
+- **Screen Record** - Auto record tests
+- **HTML Reports** - With video embed
+- **JSON Flows** - Simple tap/swipe
+- **Offline** - Works after pairing
+
+### How It Works
+
+Termux (Python)
+   -> LADB (local ADB)
+   -> Android System
+
+### Quick Start
+
+#### 1. Termux
+Install from F-Droid only.
 
 ```bash
-pkg update && pkg upgrade -y
+pkg update -y
 pkg install python git unzip -y
 termux-setup-storage
-### 2. Download Artifact
-Download `my-ladb-apk.zip` from release. Tag: `Tools`.
+#### 2. Download LADB
+Go to Releases > Tools tag.
 
-### 3. Extract
-*File Manager:* Downloads > `my-ladb-apk.zip` > Extract > `app-debug.apk`
+Download `my-ladb-apk.zip`
+Extract and install `app-debug.apk`
 
-*Termux:*
-unzip ~/storage/downloads/my-ladb-apk.zip -d ~/storage/downloads/
-If stock manager fails, use ZArchiver.
+https://github.com/Topshugar/phonelab/releases/tag/Tools
 
-### 4. Install
-Tap `app-debug.apk` > Install. If blocked: Settings > Install unknown apps > Allow File Manager.
+#### 3. Pair LADB (once)
 
-### 5. Pair LADB (One-time)
-1. Settings > About Phone > Tap Build Number 7x
-2. Developer Options > Enable Wireless Debugging
-3. Pair device with pairing code > Note port + 6-digit code
-4. Open LADB > Enter port and code > Pair > Connected
+1. Settings > About Phone
+2. Tap Build Number 7x
+3. Developer Options >
+   Wireless Debugging ON
+4. Pair device with code
+5. Open LADB, enter port + code
 
-Requires Wi-Fi for 60 seconds only. Works offline after.
+Needs Wi-Fi for 60s only.
 
-### 6. Run
+#### 4. Run
 git clone https://github.com/Topshugar/phonelab.git
 cd phonelab
 pip install -r requirements.txt
-python python_controller/farm.py --test flows/login_flow.json
-## Roadmap
+python python_controller/farm.py \
+  --test flows/login_flow.json
+Output:
+- `recordings/` - videos
+- `reports/` - logs + html
 
-- *v0.1 - Core* - QA Complete
-- [ ] v0.2 - Screen Recorder + HTML Report
-- [ ] v0.3 - Record Mode
-- [ ] v0.4 - Multi-phone Parallel
-- [ ] v0.5 - iOS Support
-- [ ] v1.0 - Web Dashboard[x]
+### Write a Flow
 
-## Known Issues
+Create `flows/my_test.json`:
+{
+  "flow": "my_test",
+  "steps": [
+    {"action": "tap", "x": 540, "y": 1200},
+    {"action": "wait", "seconds": 2},
+    {"action": "screenshot", "name": "home"}
+  ]
+}
+Actions: `tap`, `swipe`, `wait`, `screenshot`
 
-None blocking. All QA checks passed on reference device.
+### Project Structure
+phonelab/
+├── flows/ - your tests
+├── python_controller/
+│   └── farm.py - runner
+├── record.py
+├── report.py
+└── README.md
+### Roadmap
 
-## Credits
+- v0.1 - Core ADB + Flows
+- [ ] v0.2 - Recorder + Report
+- [ ] v0.3 - Record Mode (tap to JSON)
+- [ ] v0.4 - Multi-phone
+- [ ] v1.0 - Dashboard[x]
 
-- LADB by tytydraco (free build from source)
-- PhoneLab © Topshugar
+Check `CONTRIBUTING.md` to claim a task.
+
+### Contributing
+
+1. Pick issue from board
+2. Fork + branch
+3. PR
+
+### Credits
+
+- LADB by tytydraco
+- PhoneLab by Topshugar
+
+### License
+
+MIT
