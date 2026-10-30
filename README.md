@@ -1,82 +1,127 @@
-# PhoneLab
+# 📱 PhoneLab
 
-My on-device Android lab.
-No PC. No Root.
+On-device Android Automation Framework.
+Zero PC Dependency. Zero Root Requirement.
 
-I built this so my phone can test itself.
+## 📖 Overview
 
-### Why
+PhoneLab is an Android automation framework that executes ADB commands locally on the device via LADB loopback, orchestrated by Termux.
 
-PC ADB needs cable + drivers.
-Mine runs on my phone via LADB.
+Architecture:
+Termux (Python Runtime) -> LADB (Local ADB Shell) -> Android Framework
 
-### How I Run It
+## ❌ Problem Statement
 
-My Phone -> Termux -> LADB -> Android
+Traditional ADB automation requires:
+1. External host machine
+2. USB debugging cable
+3. Platform drivers
 
-#### 1. Termux
-From F-Droid only.
+## ✅ Solution
 
+PhoneLab implements self-hosted automation:
+- 🔌 LADB provides local ADB server
+- 🐍 Termux provides Python execution environment
+- ⚙️ Framework provides flow-based test orchestration
+
+## 🚀 Features
+
+- 🔌 Local ADB execution via LADB
+- 📹 Screen recording capture
+- 📊 HTML report generation
+- 📝 JSON-based flow definition
+- 📴 Offline execution capability
+- 🧩 Modular controller architecture
+
+## 📋 Prerequisites
+
+- 🤖 Android 11+
+- 📦 Termux (F-Droid distribution)
+- 🔧 LADB application
+
+## 💾 Installation
+
+### 1. 🐍 Termux Environment
+
+```bash
 pkg update -y
 pkg install python git unzip -y
 termux-setup-storage
+### 2. 📦 LADB Binary
 
-#### 2. LADB
-From my Releases > Tools:
-
+Source:
 https://github.com/Topshugar/phonelab/releases/tag/Tools
+Artifact: my-ladb-apk.zip
+Payload: app-debug.apk
+### 3. 🔗 LADB Pairing
 
-File: `my-ladb-apk.zip` -> `app-debug.apk`
-
-#### 3. Pair (once, 60s)
-
-- Settings > About Phone
-- Tap Build 7x
-- Dev Options > Wireless Debugging
-- Pair with code
-- Open LADB, enter code
-
-#### 4. Test
-
+Procedure:
+Settings > About Phone > Build Number (7x)
+Developer Options > Wireless Debugging > Enable
+Wireless Debugging > Pair with pairing code
+LADB > Input pairing code > Establish connection
+## ▶️ Execution
 git clone https://github.com/Topshugar/phonelab.git
 cd phonelab
-pip install -r http://requirements.txt
-python python_controller/farm.py \
-  --test flows/login_flow.json
+pip install -r requirements.txt
+python python_controller/farm.py --test flows/login_flow.json
+Artifacts:
+recordings/ - MP4 capture
+reports/    - HTML execution logs
+## 📝 Flow Definition
 
-I check:
-- `recordings/` - videos
-- `reports/` - logs
-
-### My Flows
-
-`flows/my_test.json`:
-
-```json
+Example:
 {
-  "flow": "my_test",
+  "flow": "login",
   "steps": [
-    {"action": "tap", "x": 540, "y": 1200},
-    {"action": "wait", "seconds": 2},
-    {"action": "screenshot", "name": "home"}
+    {
+      "action": "tap",
+      "x": 540,
+      "y": 1200
+    },
+    {
+      "action": "wait",
+      "seconds": 2
+    },
+    {
+      "action": "screenshot",
+      "name": "result"
+    }
   ]
 }
-### Structure
-flows/ - my tests
-python_controller/farm.py - runner
-record.py - recorder
-report.py - report
-### My Roadmap
+Supported Actions:
+- 👆 `tap`: `x`, `y` coordinates
+- 👉 `swipe`: `x1`, `y1`, `x2`, `y2`, `duration`
+- ⏱️ `wait`: `seconds`
+- 📸 `screenshot`: `name`
 
-- v0.1 Core - done
-- v0.2 Recorder
-- v0.3 Tap to JSON
-- v0.4 Multi-phone
-- v1.0 Dashboard
+## 📁 Directory Structure
+phonelab/
+├── flows/                      # Flow definitions
+├── python_controller/
+│   └── farm.py                 # Execution engine
+├── record.py                   # Media capture module
+├── report.py                   # Report generator
+├── requirements.txt            # Dependencies
+└── README.md
+## 🗺️ Roadmap
 
-### By Me
+- v0.1: Core ADB interface, flow parser
+- v0.2: Recording module, report generator
+- v0.3: Input capture, JSON transpiler
+- v0.4: Multi-device orchestration
+- v1.0: Web dashboard interface
 
-Built by Topshugar.
-LADB base by tytydraco.
+## 🔗 Dependencies
 
-MIT
+- LADB Core: tytydraco
+- Runtime: Termux
+- Language: Python 3.11+
+
+## 👤 Author
+
+Topshugar
+
+## 📄 License
+
+MIT License - See LICENSE
