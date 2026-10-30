@@ -1,72 +1,119 @@
-# 📱 PhoneLab
+# PhoneLab
 
-> Turn any Android phone into a self-hosted automation lab. No PC. No Root. Just LADB + Termux.
+Turn your phone into a 
+self-hosted test lab.
+No PC. No Root.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Android](https://img.shields.io/badge/Android-11%2B-brightgreen)](https://developer.android.com)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+> Python + LADB + Termux
+> Works 100% on-device.
 
-### Why PhoneLab?
-PC-based ADB is annoying. You need cables, drivers, and your PC always on. PhoneLab runs **100% on-device** using LADB's local ADB bridge. Your phone tests itself.
+## Why?
 
-**Features:**
-- 🔌 **On-Device ADB** - Uses LADB loopback, no PC needed
-- 📹 **Auto Screen Record** - Every test run is recorded
-- 📊 **HTML Reports** - Shareable reports with video
-- 🔄 **JSON Flows** - Write tests like `{"action": "tap", "x": 500, "y": 800}`
-- 📦 **Works Offline** - After 60s setup, no Wi-Fi needed
+PC ADB needs cable + drivers.
+PhoneLab runs on your phone.
 
-### How it Works
-`Termux (Python) -> LADB (local ADB) -> Android System -> ScreenRecord`
+## Features
 
-### 🚀 Quick Start
+- On-device ADB via LADB
+- Auto screen record
+- HTML reports
+- JSON flows
+- Works offline
 
-**1. Install Termux** (from F-Droid ONLY, Play Store version is dead)
-```bash
-pkg update -y && pkg install python git unzip -y
+## How It Works
+
+Termux -> LADB -> Android
+
+## Quick Start
+
+### 1. Install Termux
+Get it from F-Droid.
+Play Store is broken.
+
+pkg update -y
+pkg install python git unzip -y
 termux-setup-storage
-*2. Get LADB APK*
-Download `my-ladb-apk.zip` from https://github.com/Topshugar/phonelab/releases/tag/Tools -> Extract -> Install `app-debug.apk`
 
-*3. Pair LADB (60 seconds, one-time)*
-Settings > About Phone > Tap Build Number 7x > Developer Options > Wireless Debugging > Pair with code -> Open LADB and enter code
+### 2. Get LADB
+Download from Releases:
+Tools tag -> zip -> apk
 
-*4. Run Your First Test*
-git clone https://github.com/Topshugar/phonelab.git
+Link:
+http://github.com/Topshugar/
+phonelab/releases/tag/Tools
+
+### 3. Pair LADB
+One time only. 60 sec.
+
+- Settings > About Phone
+- Tap Build 7x
+- Dev Options >
+  Wireless Debugging
+- Pair with code
+- Open LADB, enter code
+
+### 4. Run Test
+git clone https://
+ http://github.com/Topshugar/
+ http://phonelab.git
 cd phonelab
-pip install -r requirements.txt
-python python_controller/farm.py --test flows/login_flow.json
-Videos + reports appear in `./recordings/` and `./reports/`
+pip install -r
+ http://requirements.txt
+python python_controller/
+ http://farm.py --test flows/
+ login_flow.json
 
-### 📂 Project Structure
-phonelab/
-├── flows/                  # Your test flows (JSON)
-├── python_controller/
-│   └── farm.py             # Main runner
-├── record.py               # Screen recorder module
-├── report.py               # HTML report generator
-└── README.md
-### ✍️ Writing a Flow
+Videos go to:
+`./recordings/`
+Logs go to:
+`./reports/`
+
+## Project
+
+flows/ - test JSON
+python_controller/
+ http://farm.py - main runner
+http://record.py - recorder
+http://report.py - reports
+
+## Write a Flow
+
+```json
 {
-  "flow": "my_app_test",
+  "flow": "my_test",
   "steps": [
-    {"action": "tap", "x": 540, "y": 1200},
-    {"action": "wait", "seconds": 2},
-    {"action": "screenshot", "name": "result"}
+    {
+      "action": "tap",
+      "x": 540,
+      "y": 1200
+    },
+    {
+      "action": "wait",
+      "seconds": 2
+    },
+    {
+      "action": "screenshot",
+      "name": "result"
+    }
   ]
 }
-### 🗺️ Roadmap
-- *v0.1* Core on-device ADB + Flows
-- [ ] *v0.2* Screen Recorder + HTML Report (Claim this!)
-- [ ] *v0.3* Record Mode - Tap to generate JSON
-- [ ] *v0.4* Multi-phone parallel
-- [ ] *v1.0* Web Dashboard[x]
+## Roadmap
 
-Want to build one? Check [CONTRIBUTING.md](CONTRIBUTING.md) -> https://github.com/Topshugar/phonelab/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
+- v0.1 Core - DONE
+- v0.2 Recorder + Report
+- v0.3 Record taps to JSON
+- v0.4 Multi-phone
+- v1.0 Web Dashboard
 
-### 🤝 Contributing
-We track everything on the Project Board. PRs welcome!
+Want to build?
+See http://CONTRIBUTING.md
 
-### Credits
-- LADB by https://github.com/tytydraco/ladb
+## Contributing
+
+PRs welcome!
+Check Issues tab.
+
+## Credits
+
+- LADB by tytydraco
 - Built by Topshugar
