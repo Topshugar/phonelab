@@ -1,6 +1,5 @@
 # PhoneLab - On-Device Android Lab
-
-> **QA Status: PASSED** | Verified on Android 11+ | Release Artifact Validated
+**QA Status:** PASSED | Verified on Android 11+ | Release Artifact Validated
 
 Self-contained Android automation framework for executing ADB operations directly on-device via LADB local bridge. No PC required.
 
@@ -8,19 +7,18 @@ Self-contained Android automation framework for executing ADB operations directl
 
 | Check | Status |
 | :--- | :--- |
-| Release artifact `my-ladb-apk.zip` | ✅ PASS - Downloadable via Tools tag |
-| ZIP extraction | ✅ PASS - Contains `app-debug.apk` |
+| Release artifact my-ladb-apk.zip | ✅ PASS - Downloadable via Tools tag |
+| ZIP extraction | ✅ PASS - Contains app-debug.apk |
 | APK installation | ✅ PASS - Installs without root |
 | Wireless Debugging pairing | ✅ PASS - Loopback pairing successful |
 | Termux environment | ✅ PASS - Python 3.10+ compatible |
-| `farm.py` execution | ✅ PASS - Runs on local ADB |
+| farm.py execution | ✅ PASS - Runs on local ADB |
 
 **Download:** https://github.com/Topshugar/phonelab/releases/download/Tools/my-ladb-apk.zip
 
 ## Installation - Verified Walkthrough
 
 ### 1. Termux Setup (Required)
-
 Install Termux from F-Droid only. Play Store version is deprecated.
 
 ```bash
@@ -28,11 +26,9 @@ pkg update && pkg upgrade -y
 pkg install python git unzip -y
 termux-setup-storage
 ### 2. Download Artifact
-
 Download `my-ladb-apk.zip` from release. Tag: `Tools`.
 
 ### 3. Extract
-
 *File Manager:* Downloads > `my-ladb-apk.zip` > Extract > `app-debug.apk`
 
 *Termux:*
@@ -40,11 +36,9 @@ unzip ~/storage/downloads/my-ladb-apk.zip -d ~/storage/downloads/
 If stock manager fails, use ZArchiver.
 
 ### 4. Install
-
 Tap `app-debug.apk` > Install. If blocked: Settings > Install unknown apps > Allow File Manager.
 
 ### 5. Pair LADB (One-time)
-
 1. Settings > About Phone > Tap Build Number 7x
 2. Developer Options > Enable Wireless Debugging
 3. Pair device with pairing code > Note port + 6-digit code
@@ -56,7 +50,7 @@ Requires Wi-Fi for 60 seconds only. Works offline after.
 git clone https://github.com/Topshugar/phonelab.git
 cd phonelab
 pip install -r requirements.txt
-python farm.py
+python python_controller/farm.py --test flows/login_flow.json
 ## Roadmap
 
 - *v0.1 - Core* - QA Complete
