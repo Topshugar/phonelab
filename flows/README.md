@@ -1,8 +1,31 @@
-# How to write a flow
-x,y is screen position. Use 1080x1920 as reference.
+# Flows
 
-Actions:
-- tap: {"action": "tap", "x": 540, "y": 1200}
-- swipe: {"action": "swipe", "from": [500,1500], "to": [500,500]}
-- wait: {"action": "wait", "seconds": 2}
-- screenshot: {"action": "screenshot", "name": "screen1"}
+JSON test flows for PhoneLab.
+
+## Location
+flows/ - All flow JSON files go here. python_controller/farm.py reads them.
+
+## Format
+{
+  "flow": "login_flow",
+  "steps": [
+    { "action": "tap", "x": 500, "y": 800 },
+    { "action": "swipe", "from": [500, 1000], "to": [500, 200] },
+    { "action": "wait", "seconds": 2 },
+    { "action": "screenshot", "name": "result" }
+  ]
+}
+
+## Actions
+- tap - x, y
+- swipe - from, to
+- wait - seconds
+- screenshot - name[x][y]
+
+## Run
+python python_controller/farm.py --test flows/login_flow.json
+
+## Output
+- Videos -> ./recordings/
+- Reports -> ./recordings/
+- Logs -> ./reports/
