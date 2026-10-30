@@ -1,58 +1,65 @@
-# 📱 PhoneLab — Real Phone Testing, Not Emulators
+# PhoneLab - On-Device Android Lab & Task Farm
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Stars](https://img.shields.io/github/stars/Topshugar/phonelab?style=social)](https://github.com/Topshugar/phonelab)
-[![PhoneLab CI](https://github.com/Topshugar/phonelab/actions/workflows/main.yml/badge.svg)](https://github.com/Topshugar/phonelab/actions/workflows/main.yml)
+> A lightweight, on-device automation framework for ADB orchestration, task farming, and environment isolation - without a PC. Tested on Redmi A2+ and compatible with all Android 11+ devices.
 
-> **Emulators lie. Real phones crash differently.** PhoneLab runs your app on REAL Android phones and finds crashes emulators miss.
+PhoneLab enables you to run ADB commands, farm tasks, and manage local workspaces directly on your phone using a local ADB bridge.
 
-### 🎥 Demo
-![Demo](https://raw.githubusercontent.com/Topshugar/phonelab/main/reports/demo.gif)
-*Tap, Swipe, Screenshot, Logs - Fully Automated*
+### Compatibility
 
----
+- **Minimum:** Android 11+ with Wireless Debugging
+- **Tested & Optimized:** Redmi A2+ (Android Go), but works on any modern Android device
+- **Storage:** ~50MB free
 
-### Why PhoneLab?
-- ❌ Emulators: No real sensors, fake performance
-- ✅ PhoneLab: Real device, real crash logs, real screenshots
+### Installation & LADB Deployment
 
-### ✨ Features
-- 🔌 Plug & Play - Just `adb devices`
-- 🤖 JSON test flows - No code needed
-- 📸 Auto screenshots + logcat on failure
-- 🐍 100% Python - Hackable in 5 mins
-- 📊 HTML reports
+We provide a pre-compiled free build of LADB so you can run PhoneLab without a PC or paid app.
 
-### 🚀 Quick Start - 30 Seconds
+#### 1. Download
+
+**Latest:** [my-ladb-apk.zip](https://github.com/Topshugar/phonelab/releases/latest/download/my-ladb-apk.zip)
+
+#### 2. Extract APK from ZIP
+
+The file is distributed as ZIP. You must extract first:
+
+**File Manager:** Downloads > tap `my-ladb-apk.zip` > Extract > you get `app-debug.apk`
+
+**Termux:** `unzip ~/storage/downloads/my-ladb-apk.zip`
+
+If your File Manager can't extract, install **ZArchiver** (free, 5MB).
+
+#### 3. Install
+
+Tap `app-debug.apk` > Install. If blocked, allow "Install unknown apps" for File Manager.
+
+#### 4. One-Time Pairing
+
+1. Settings > About Phone > Tap Build Number 7x
+2. Settings > Developer Options > Enable **Wireless Debugging**
+3. Inside Wireless Debugging > **Pair device with pairing code**
+4. Note Port and 6-digit code
+5. Open LADB > Enter Port + Code > Pair
+6. Once Connected, LADB will work offline forever
+
+> You only need WiFi for 60 seconds to get the pairing code. After that, it works without internet.
+
+#### 5. Run PhoneLab
+
 ```bash
 git clone https://github.com/Topshugar/phonelab.git
 cd phonelab
 pip install -r requirements.txt
-adb devices
-### 🚀 Quick Start - 30 Seconds
-```bash
-git clone https://github.com/Topshugar/phonelab.git
-cd phonelab
-pip install -r requirements.txt
-adb devices
-python python_controller/farm.py --test flows/login_flow.json
-```
+python farm.py
+### Roadmap
 
-### 🗺️ Roadmap
-- [x] **v0.1 - Core**
-- [ ] **v0.2 - Screen Recorder + HTML Report**
-- [ ] **v0.3 - Record Mode**
-- [ ] **v0.4 - Multi-phone Parallel**
-- [ ] **v0.5 - iOS Support**
-- [ ] **v1.0 - Web Dashboard**
+- Free LADB artifact distribution
+- Multi-device compatibility (Android 11+)
+- [ ] Auto-recovery task queue
+- [ ] Battery/thermal protection
+- [ ] Multi-device fleet mode
+- [ ] Local dashboard
 
-### 📸 How It Works
-Real Phone -> ADB -> Python Controller -> Reports
+### Credits
 
-### 🤝 Contributing
-We welcome contributions!
-
-### 📄 License
-MIT License - Free for commercial use.
+- LADB by tytydraco - free build compiled from source for testing
+- PhoneLab © Topshugar
