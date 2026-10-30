@@ -1,74 +1,58 @@
 # PhoneLab
 
-> On-device Android automation lab.
-> No PC. No Root. Just your phone.
+My on-device Android lab.
+No PC. No Root.
 
-[[License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[[Android](https://img.shields.io/badge/Android-11%2B-brightgreen.svg)](#)
-[[PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](CONTRIBUTING.md)
+I built this so my phone can test itself.
 
-### Why PhoneLab?
+### Why
 
-Normal ADB needs a PC, cable, drivers.
+PC ADB needs cable + drivers.
+Mine runs on my phone via LADB.
 
-PhoneLab runs ADB directly on your
-phone using LADB. Your phone tests itself.
+### How I Run It
 
-### Features
-
-- **On-Device ADB** - LADB loopback
-- **Screen Record** - Auto record tests
-- **HTML Reports** - With video embed
-- **JSON Flows** - Simple tap/swipe
-- **Offline** - Works after pairing
-
-### How It Works
-
-Termux (Python)
-   -> LADB (local ADB)
-   -> Android System
-
-### Quick Start
+My Phone -> Termux -> LADB -> Android
 
 #### 1. Termux
-Install from F-Droid only.
+From F-Droid only.
 
-```bash
 pkg update -y
 pkg install python git unzip -y
 termux-setup-storage
-#### 2. Download LADB
-Go to Releases > Tools tag.
 
-Download `my-ladb-apk.zip`
-Extract and install `app-debug.apk`
+#### 2. LADB
+From my Releases > Tools:
 
 https://github.com/Topshugar/phonelab/releases/tag/Tools
 
-#### 3. Pair LADB (once)
+File: `my-ladb-apk.zip` -> `app-debug.apk`
 
-1. Settings > About Phone
-2. Tap Build Number 7x
-3. Developer Options >
-   Wireless Debugging ON
-4. Pair device with code
-5. Open LADB, enter port + code
+#### 3. Pair (once, 60s)
 
-Needs Wi-Fi for 60s only.
+- Settings > About Phone
+- Tap Build 7x
+- Dev Options > Wireless Debugging
+- Pair with code
+- Open LADB, enter code
 
-#### 4. Run
+#### 4. Test
+
 git clone https://github.com/Topshugar/phonelab.git
 cd phonelab
-pip install -r requirements.txt
+pip install -r http://requirements.txt
 python python_controller/farm.py \
   --test flows/login_flow.json
-Output:
+
+I check:
 - `recordings/` - videos
-- `reports/` - logs + html
+- `reports/` - logs
 
-### Write a Flow
+### My Flows
 
-Create `flows/my_test.json`:
+`flows/my_test.json`:
+
+```json
 {
   "flow": "my_test",
   "steps": [
@@ -77,37 +61,22 @@ Create `flows/my_test.json`:
     {"action": "screenshot", "name": "home"}
   ]
 }
-Actions: `tap`, `swipe`, `wait`, `screenshot`
+### Structure
+flows/ - my tests
+python_controller/farm.py - runner
+record.py - recorder
+report.py - report
+### My Roadmap
 
-### Project Structure
-phonelab/
-├── flows/ - your tests
-├── python_controller/
-│   └── farm.py - runner
-├── record.py
-├── report.py
-└── README.md
-### Roadmap
+- v0.1 Core - done
+- v0.2 Recorder
+- v0.3 Tap to JSON
+- v0.4 Multi-phone
+- v1.0 Dashboard
 
-- v0.1 - Core ADB + Flows
-- [ ] v0.2 - Recorder + Report
-- [ ] v0.3 - Record Mode (tap to JSON)
-- [ ] v0.4 - Multi-phone
-- [ ] v1.0 - Dashboard[x]
+### By Me
 
-Check `CONTRIBUTING.md` to claim a task.
-
-### Contributing
-
-1. Pick issue from board
-2. Fork + branch
-3. PR
-
-### Credits
-
-- LADB by tytydraco
-- PhoneLab by Topshugar
-
-### License
+Built by Topshugar.
+LADB base by tytydraco.
 
 MIT
