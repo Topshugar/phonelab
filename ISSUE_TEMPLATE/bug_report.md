@@ -1,8 +1,9 @@
 ---
 name: Bug Report
 about: Report a bug
-title: "[BUG] "
+title: "[BUG]"
 labels: bug
+assignees: ''
 ---
 
 **Device Model:**
@@ -10,6 +11,7 @@ labels: bug
 **Android Version:**
 
 **Describe Bug:**
+A clear description of the bug.
 
 **Steps to Reproduce:**
 1. 
@@ -20,3 +22,6 @@ Paste logs here
 
 **Expected:**
 What should happen
+
+**Additional Context:**
+Add any extra info, screenshots
