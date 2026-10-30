@@ -1,65 +1,102 @@
-# PhoneLab - On-Device Android Lab & Task Farm
+# PhoneLab - On-Device Android Lab
 
-> A lightweight, on-device automation framework for ADB orchestration, task farming, and environment isolation - without a PC. Tested on Redmi A2+ and compatible with all Android 11+ devices.
+> A lightweight framework for running ADB operations directly on Android without a PC.
 
-PhoneLab enables you to run ADB commands, farm tasks, and manage local workspaces directly on your phone using a local ADB bridge.
+PhoneLab uses LADB to create a local ADB shell via Wireless Debugging loopback, allowing you to run `farm.py` and other automation directly on-device.
 
-### Compatibility
+### Download
 
-- **Minimum:** Android 11+ with Wireless Debugging
-- **Tested & Optimized:** Redmi A2+ (Android Go), but works on any modern Android device
-- **Storage:** ~50MB free
+**LADB APK (inside ZIP):** https://github.com/Topshugar/phonelab/releases/download/Tools/my-ladb-apk.zip
 
-### Installation & LADB Deployment
+Release tag: `Tools` - File: `my-ladb-apk.zip` containing `app-debug.apk`
 
-We provide a pre-compiled free build of LADB so you can run PhoneLab without a PC or paid app.
+---
 
-#### 1. Download
+### Complete Walkthrough
 
-**Latest:** [my-ladb-apk.zip](https://github.com/Topshugar/phonelab/releases/latest/download/my-ladb-apk.zip)
+#### Prerequisites
 
-#### 2. Extract APK from ZIP
+- Android 11 or higher
+- Device with Wireless Debugging option
+- File Manager that can extract ZIP (or ZArchiver)
+- Termux
 
-The file is distributed as ZIP. You must extract first:
+#### Step 1: Termux Setup
 
-**File Manager:** Downloads > tap `my-ladb-apk.zip` > Extract > you get `app-debug.apk`
-
-**Termux:** `unzip ~/storage/downloads/my-ladb-apk.zip`
-
-If your File Manager can't extract, install **ZArchiver** (free, 5MB).
-
-#### 3. Install
-
-Tap `app-debug.apk` > Install. If blocked, allow "Install unknown apps" for File Manager.
-
-#### 4. One-Time Pairing
-
-1. Settings > About Phone > Tap Build Number 7x
-2. Settings > Developer Options > Enable **Wireless Debugging**
-3. Inside Wireless Debugging > **Pair device with pairing code**
-4. Note Port and 6-digit code
-5. Open LADB > Enter Port + Code > Pair
-6. Once Connected, LADB will work offline forever
-
-> You only need WiFi for 60 seconds to get the pairing code. After that, it works without internet.
-
-#### 5. Run PhoneLab
+1. Install Termux from F-Droid (not Play Store - Play Store version is outdated)
+2. Open Termux and run:
 
 ```bash
+pkg update && pkg upgrade -y
+pkg install python git unzip -y
+termux-setup-storage
+Allow storage permission when prompted.
+
+#### Step 2: Download the ZIP Artifact
+
+1. Tap the download link above
+2. Wait for `my-ladb-apk.zip` to finish in Downloads
+3. File is ∼3.8MB compressed
+
+#### Step 3: Extract APK from ZIP
+
+The file is distributed as ZIP because GitHub mobile blocks direct APK upload.
+
+*File Manager:*
+Downloads > Tap `my-ladb-apk.zip` > Extract > you get `app-debug.apk`
+
+*Termux:*
+cd ~/storage/downloads
+unzip my-ladb-apk.zip
+> If extraction fails, install ZArchiver from Play Store.
+
+#### Step 4: Install APK
+
+1. Tap `app-debug.apk` > Install
+2. If blocked: Settings > Apps > Special Access > Install unknown apps > Allow File Manager
+3. Verify LADB appears in app drawer
+
+#### Step 5: Wireless ADB Pairing (One-Time)
+
+1. Settings > About Phone > Tap Build Number 7 times
+2. Settings > System > Developer Options > Enable Wireless Debugging
+3. Inside Wireless Debugging > Pair device with pairing code
+4. Note IP:PORT and 6-digit code
+5. Open LADB > Enter port and code > Pair
+6. LADB shows Connected
+
+> You only need Wi-Fi for 60 seconds to get the code. After pairing, it works offline.
+
+#### Step 6: Run PhoneLab
 git clone https://github.com/Topshugar/phonelab.git
 cd phonelab
 pip install -r requirements.txt
 python farm.py
+---
+
 ### Roadmap
 
-- Free LADB artifact distribution
-- Multi-device compatibility (Android 11+)
-- [ ] Auto-recovery task queue
-- [ ] Battery/thermal protection
-- [ ] Multi-device fleet mode
-- [ ] Local dashboard
+- *v0.1 - Core*
+- [ ] v0.2 - Screen Recorder + HTML Report
+- [ ] v0.3 - Record Mode
+- [ ] v0.4 - Multi-phone Parallel
+- [ ] v0.5 - iOS Support
+- [ ] v1.0 - Web Dashboard[x]
+
+### Troubleshooting
+
+- *Can't install APK:* Enable Install unknown apps for File Manager
+- *LADB offline:* Re-enable Wireless Debugging
+- *Can't extract ZIP:* Use ZArchiver
+- *farm.py permission denied:* Run `termux-setup-storage`
+
+### Requirements
+
+- Android 11+
+- Wireless Debugging support
+- ∼50MB free
 
 ### Credits
 
-- LADB by tytydraco - free build compiled from source for testing
+- LADB by tytydraco - free build compiled from source
 - PhoneLab © Topshugar
